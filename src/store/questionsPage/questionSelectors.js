@@ -1,0 +1,1 @@
+export const selectQuestions = (reduxState) => reduxState.questions.pregunta;
