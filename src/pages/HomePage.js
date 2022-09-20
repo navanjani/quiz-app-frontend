@@ -6,6 +6,7 @@ import {categorySelected} from "../store/questionsPage/QuestionSlice";
 import {CATEGORY} from "../config/constants";
 import {Link} from "react-router-dom";
 
+
 const HomePage = () => {
         const [selectedId, setSelectedId]=useState(0);
         const dispatch=useDispatch();
@@ -20,6 +21,7 @@ const HomePage = () => {
         { background: '#e9e8fe', fonts: [{ text: CATEGORY[2]}] },
         { background: '#b8c5f2', fonts: [{ text: CATEGORY[3]}] }
     ])
+
 
     const [buttons] = useState([
         { radius: '40%', background: '#617df2' },
@@ -47,6 +49,7 @@ const HomePage = () => {
                     setTimeout(() => {
                         const index = Math.random() * 4 >> 0
                         myLucky.current.stop(index)
+
                     }, 2000)
                 }}
 
@@ -73,6 +76,7 @@ const HomePage = () => {
                      <button>Start Question!</button>
                 </Link>
             </div>
+
 
         </div>
 
