@@ -2,13 +2,12 @@
 import React, { useState, useRef } from 'react';
 import { LuckyWheel } from '@lucky-canvas/react';
 import {useDispatch} from "react-redux";
-import {selectCategory} from "../store/questionsPage/questionSelectors";
 import {categorySelected} from "../store/questionsPage/QuestionSlice";
 import {CATEGORY} from "../config/constants";
 import {Link} from "react-router-dom";
 
 const HomePage = () => {
-        const [selected, setSelected]=useState('');
+        const [selectedId, setSelectedId]=useState(0);
         const dispatch=useDispatch();
 
     const [blocks] = useState([
@@ -53,24 +52,24 @@ const HomePage = () => {
 
                 onEnd={prize => { // 抽奖结束会触发end回调
                     const category=prize.fonts[0].text;
-                    setSelected(category);
+                   setSelectedId(CATEGORY.indexOf(category)+1);
                     dispatch(categorySelected(category));
-                   //alert('You chosed ' + prize.fonts[0].text + ' Category');
                 }}
             />
-            <div sx={{display:"flex",flexDirection:"row"}}>
-               <div><b>Categories:</b> </div> <div>Food</div>
+            <div style={{ display:"flex" , flexDirection: "row",justifyContent:"space-evenly" ,margin:30,backgroundColor:"aliceblue"}}>
+                 <div>Categories: </div> <div>Food</div>
                 <div>Sports</div>  <div>Science</div>  <div>Places</div>
             </div>
 
             <div>
-            {selected!==''?
-            <h4>your choice is :{selected}  </h4>
+            {selectedId!==0?
+            <h4>your choice is :{CATEGORY[selectedId-1]}  </h4>
              :null }
             </div>
 
             <div>
-                <Link to='/questions/:id' style={{ textAlign: "center" }}>
+
+                <Link to={`/questions/${selectedId}`} style={{ textAlign: "center" }}>
                      <button>Start Question!</button>
                 </Link>
             </div>
