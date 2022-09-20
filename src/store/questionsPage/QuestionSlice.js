@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit"
 
 const initialState = {
-    pregunta:null
+    pregunta:null,
+    category:null,
 }
 
 const questionsSlice = createSlice({
@@ -9,11 +10,14 @@ const questionsSlice = createSlice({
     initialState,
     reducers:{
         questionsFetched:(state, action)=>{
-            State.pregunta = action.payload
+            state.pregunta = action.payload
+        },
+        categorySelected:(state,action)=>{
+            state.category=action.payload;
         }
     }
 })
 
-export const {questionsFetched} = questionsSlice.actions;
+export const {questionsFetched,categorySelected} = questionsSlice.actions;
 
 export default questionsSlice.reducer

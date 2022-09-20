@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import GamePage from "./pages/GamePage";
 import FinalScreen from "./pages/FinalScreen";
 
+
 function App() {
     return (
         <div className="App">
