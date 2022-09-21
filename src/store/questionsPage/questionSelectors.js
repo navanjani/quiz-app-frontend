@@ -1,2 +1,2 @@
 export const selectQuestions = (reduxState) => reduxState.questions.pregunta;
-export const selectCategory = (reduxState) => reduxState.questions.category;
+export const selectCategoryArr = (reduxState) => reduxState.questions.categoryArr;
