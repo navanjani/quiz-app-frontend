@@ -1,0 +1,17 @@
+.page-container {
+    max-width: 1000px;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    min-height: 1000px;
+    text-align: center;
+    padding: 30px;
+    margin: 50px auto;
+}
+.score-wrapper{
+    width: 200px;
+    height: 100px;
+    margin: 200px auto;
+    border: 1px solid greenyellow;
+    padding: 30px 10px;
+    font-size: 40px;
+}

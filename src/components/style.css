@@ -1,0 +1,25 @@
+.answer-wrapper{
+    width:300px;
+    height: 50px;
+    margin: 20px;
+    border-radius: 25px;
+    border: 1px solid;
+    padding: 3px;
+    border-image: linear-gradient(45deg, purple, orange) 1;
+}
+.button-wrapper{
+    margin-top: 50px;
+}
+.question-wrapper{
+    margin: 100px auto;
+    padding: 40px;
+    height: 200px;
+    border: 1px solid;
+    border-image: linear-gradient(45deg, purple, orange) 1;
+}
+.score-wrapper{
+    margin-top: 100px;
+}
+.top-score-wrapper{
+    margin-top: 100px;
+}

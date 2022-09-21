@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit"
 
 const initialState = {
+
     pregunta:[],
     preguntaNumber:Math.floor((Math.random() * 9)+1),
     previousQuestionsNumber:[],
@@ -9,6 +10,9 @@ const initialState = {
     finalCount:0,
     previousCategories:[],
     newCategoryNumber:Math.floor((Math.random() * 3)+1),
+
+  
+
 }
 
 const questionsSlice = createSlice({
@@ -18,6 +22,7 @@ const questionsSlice = createSlice({
         questionsFetched:(state, action)=>{
             state.pregunta = action.payload
         },
+
         answerFecthced:(state, action)=>{
             state.responder = action.payload
         },
@@ -44,15 +49,18 @@ const questionsSlice = createSlice({
         },
         newCatNumber:(state, action)=>{
             state.newCategoryNumber = action.payload
+
         }
 
     }
 })
+
 
 export const {questionsFetched,setPreviousQuestionsNumber,
     newPreguntaNumber,setCount,
     setScore,resetCount,
     setFinalCount,setPreviousCategories
     ,newCatNumber} = questionsSlice.actions;
+
 
 export default questionsSlice.reducer
