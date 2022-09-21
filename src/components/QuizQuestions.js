@@ -6,7 +6,6 @@ import {
   selectNewQuestionNumber,
   selectPreviousQuestionsNumber,
   selectQuestions,
-  selectScore,
   selectCount,
   selectFinalCount,
   selectPreviousCategories,
@@ -39,7 +38,6 @@ export const QuizQuestions = () => {
   const qNumber = useSelector(selectNewQuestionNumber);
   const newNumber = Math.floor(Math.random() * 9 + 1);
   const pNumber = useSelector(selectPreviousQuestionsNumber);
-  const score = useSelector(selectScore);
   const count = useSelector(selectCount);
   const finalCountDown = useSelector(selectFinalCount);
   const categoriesArray = useSelector(selectPreviousCategories);
@@ -70,7 +68,7 @@ export const QuizQuestions = () => {
     }
   };
   if (finalCountDown >= 12) {
-    return <Navigate to="/" />;
+    return <Navigate to="/final" />;
   }
   const round2 = () => {
     if (categoriesArray.includes(parseInt(newCategory))) {
