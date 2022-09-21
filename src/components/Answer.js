@@ -1,8 +1,10 @@
 import "./style.css";
-const Answer = () => {
+const Answer = ({ answer, onClickHandler }) => {
   return (
-    <div className="col-md-6">
-      <div className="answer-wrapper border-gradient-green"></div>
+    <div className="col-md-6" onClick={() => onClickHandler(answer.correct)}>
+      <div className="answer-wrapper border-gradient-green">
+        {answer.answer}
+      </div>
     </div>
   );
 };

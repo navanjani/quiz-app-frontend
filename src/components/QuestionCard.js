@@ -1,7 +1,7 @@
-const QuestionCard = () => {
+const QuestionCard = ({ question }) => {
   return (
     <div className="question-wrapper">
-      <p>Question</p>
+      <h5>{question}</h5>
     </div>
   );
 };

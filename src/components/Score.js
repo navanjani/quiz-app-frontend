@@ -1,8 +1,8 @@
 import "./style.css";
-const Score = () => {
+const Score = ({ score }) => {
   return (
     <div className="score-wrapper">
-      <h3>Your score : </h3>
+      <h3>Your score : {score}</h3>
     </div>
   );
 };
