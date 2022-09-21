@@ -1,5 +1,6 @@
 import "./style.css";
 import ButtonComponent from "../components/ButtonComponent";
+import { Link } from "react-router-dom";
 const FinalScreen = () => {
   return (
     <div className="page-container">
@@ -7,7 +8,9 @@ const FinalScreen = () => {
       <div className="score-wrapper">50</div>
       <div className="row">
         <div className="col">
-          <ButtonComponent label="Replay" />
+          <Link to="/">
+            <ButtonComponent label="Replay" />
+          </Link>
         </div>
         <div className="col">
           <ButtonComponent label="Submit" />

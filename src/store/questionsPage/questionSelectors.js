@@ -1,8 +1,12 @@
-export const selectQuestions = (reduxState) => reduxState.questions.pregunta;
-export const selectNewQuestionNumber = (reduxState) => reduxState.questions.preguntaNumber;
-export const selectPreviousQuestionsNumber = (reduxState) => reduxState.questions.previousQuestionsNumber;
-export const selectScore = (reduxState) => reduxState.questions.score;
-export const selectCount = (reduxState) => reduxState.questions.count;
-export const selectFinalCount = (reduxState) => reduxState.questions.finalCount;
-export const selectPreviousCategories = (reduxState) => reduxState.questions.previousCategories;
-export const selectNewCategory = (reduxState) => reduxState.questions.newCategoryNumber;
+export const selectQuestions = (reduxState) => reduxState.question.pregunta;
+export const selectNewQuestionNumber = (reduxState) =>
+  reduxState.question.preguntaNumber;
+export const selectPreviousQuestionsNumber = (reduxState) =>
+  reduxState.question.previousQuestionsNumber;
+export const selectScore = (reduxState) => reduxState.question.score;
+export const selectCount = (reduxState) => reduxState.question.count;
+export const selectFinalCount = (reduxState) => reduxState.question.finalCount;
+export const selectPreviousCategories = (reduxState) =>
+  reduxState.question.previousCategories;
+export const selectNewCategory = (reduxState) =>
+  reduxState.question.newCategoryNumber;
