@@ -146,6 +146,16 @@ const GamePage = () => {
                 )}
               </div>
             </div>
+
+            <div className="button-wrapper">
+              <ButtonComponent
+                handleOnClick={() => {
+                  dispatch(setCount());
+                  game();
+                }}
+                label="Next Question"
+              />
+            </div>
           </div>
         </div>
       </div>
