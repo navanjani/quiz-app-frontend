@@ -67,16 +67,20 @@ const GamePage = () => {
       dispatch(setScore());
       dispatch(setCount());
       dispatch(setFinalCount());
-      game();
+      setTimeout(() => {
+        game();
+      }, 2000);
     } else {
       setPreviousQuestionsNumber(qNumber);
       dispatch(setCount());
       dispatch(setFinalCount());
-      game();
+      setTimeout(() => {
+        game();
+      }, 2000);
     }
   };
   if (finalCountDown >= 12) {
-    return <Navigate to="/" />;
+    return <Navigate to="/final" />;
   }
   const round2 = () => {
     if (categoriesArray.includes(parseInt(newCategory))) {
@@ -118,7 +122,10 @@ const GamePage = () => {
               </div>
             </div>
             <div className="button-wrapper">
-              <ButtonComponent label="Next Question" />
+              <ButtonComponent
+                handleOnClick={() => game()}
+                label="Next Question"
+              />
             </div>
           </div>
         </div>
