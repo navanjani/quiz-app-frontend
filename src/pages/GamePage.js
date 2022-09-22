@@ -134,7 +134,10 @@ const GamePage = () => {
             </div>
             <div className="button-wrapper">
               <ButtonComponent
-                handleOnClick={() => game()}
+                handleOnClick={() => {
+                  dispatch(setCount());
+                  game();
+                }}
                 label="Next Question"
               />
             </div>

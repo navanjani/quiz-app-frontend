@@ -1,4 +1,6 @@
 export const selectQuestions = (reduxState) => reduxState.question.pregunta;
+export const selectCategoryArr = (reduxState) =>
+  reduxState.question.categoryArr;
 export const selectNewQuestionNumber = (reduxState) =>
   reduxState.question.preguntaNumber;
 export const selectPreviousQuestionsNumber = (reduxState) =>
