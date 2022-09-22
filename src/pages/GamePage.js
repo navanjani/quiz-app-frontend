@@ -2,8 +2,11 @@ import "./style.css";
 import SideBarScore from "../components/SideBarScore";
 import Answer from "../components/Answer";
 import ButtonComponent from "../components/ButtonComponent";
-import { useDispatch, useSelector, useStore } from "react-redux";
-import { fetchQuestions } from "../store/questionsPage/QuestionActions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchQuestions,
+  getHighScore,
+} from "../store/questionsPage/QuestionActions";
 import { useParams, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -15,6 +18,7 @@ import {
   selectFinalCount,
   selectPreviousCategories,
   selectNewCategory,
+  selectHighScore,
 } from "../store/questionsPage/questionSelectors";
 import { Button, Row } from "react-bootstrap";
 import {
@@ -26,6 +30,7 @@ import {
   setFinalCount,
   setPreviousCategories,
   newCatNumber,
+  setHighScore,
 } from "../store/questionsPage/QuestionSlice";
 import QuestionCard from "../components/QuestionCard";
 
@@ -37,7 +42,9 @@ const GamePage = () => {
 
   useEffect(() => {
     dispatch(fetchQuestions(id));
-    dispatch(setPreviousCategories(id));
+    dispatch(setPreviousCategories(parseInt(id)));
+    dispatch(getHighScore());
+    dispatch(getHighScore());
   }, [dispatch, id]);
 
   const questions = useSelector(selectQuestions);
@@ -47,6 +54,7 @@ const GamePage = () => {
   const score = useSelector(selectScore);
   const count = useSelector(selectCount);
   const finalCountDown = useSelector(selectFinalCount);
+  const highScore = useSelector(selectHighScore);
   const categoriesArray = useSelector(selectPreviousCategories);
   const newCategory = useSelector(selectNewCategory);
   const [answered, setAnswered] = useState(false);
@@ -75,14 +83,14 @@ const GamePage = () => {
         dispatch(setFinalCount());
         setTimeout(() => {
           game();
-        }, 2000);
+        }, 1000);
       } else {
         setPreviousQuestionsNumber(qNumber);
         dispatch(setCount());
         dispatch(setFinalCount());
         setTimeout(() => {
           game();
-        }, 2000);
+        }, 1000);
       }
       setAnswered(true);
     }
@@ -98,6 +106,7 @@ const GamePage = () => {
     } else {
       dispatch(resetCount());
       dispatch(fetchQuestions(newCategory));
+      dispatch(setPreviousCategories(parseInt(newCategory)));
     }
   };
 
@@ -105,7 +114,7 @@ const GamePage = () => {
     <div className="container container-wrapper">
       <div className="row">
         <div className="col-md-4">
-          <SideBarScore score={score} />
+          <SideBarScore score={score} highscore={highScore} />
         </div>
         <div className="col">
           <div className=" page-container">
@@ -128,10 +137,16 @@ const GamePage = () => {
                     </Row>
                   </div>
                 ) : (
-                  <Button onClick={round2}>Round 2</Button>
+                  <ButtonComponent
+                    label="Round Two"
+                    handleOnClick={() => {
+                      round2();
+                    }}
+                  />
                 )}
               </div>
             </div>
+
             <div className="button-wrapper">
               <ButtonComponent
                 handleOnClick={() => {
