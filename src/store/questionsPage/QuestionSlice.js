@@ -11,6 +11,8 @@ const initialState = {
   newCategoryNumber: Math.floor(Math.random() * 3 + 1),
   bonusModal: false,
   bounusCounter: 0,
+  highScore: null,
+  showHighScoreModal: false,
 };
 
 const questionsSlice = createSlice({
@@ -54,6 +56,12 @@ const questionsSlice = createSlice({
     bonusQuestion: (state, action) => {
       state.score = state.score - action.payload;
     },
+    setHighScore: (state, action) => {
+      state.highScore = action.payload;
+    },
+    setHighScoreModal: (state) => {
+      state.showHighScoreModal = !state.showHighScoreModal;
+    },
   },
 });
 
@@ -69,6 +77,8 @@ export const {
   newCatNumber,
   bonusModalSHow,
   bonusQuestion,
+  setHighScore,
+  setHighScoreModal,
 } = questionsSlice.actions;
 
 export default questionsSlice.reducer;

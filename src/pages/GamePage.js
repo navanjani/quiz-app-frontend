@@ -18,6 +18,7 @@ import {
   selectFinalCount,
   selectPreviousCategories,
   selectNewCategory,
+  selectHighScore,
 } from "../store/questionsPage/questionSelectors";
 import { Button, Row } from "react-bootstrap";
 import {
@@ -29,6 +30,7 @@ import {
   setFinalCount,
   setPreviousCategories,
   newCatNumber,
+  setHighScore,
 } from "../store/questionsPage/QuestionSlice";
 import QuestionCard from "../components/QuestionCard";
 
@@ -42,6 +44,7 @@ const GamePage = () => {
     dispatch(fetchQuestions(id));
     dispatch(setPreviousCategories(parseInt(id)));
     dispatch(getHighScore());
+    dispatch(getHighScore());
   }, [dispatch, id]);
 
   const questions = useSelector(selectQuestions);
@@ -51,6 +54,7 @@ const GamePage = () => {
   const score = useSelector(selectScore);
   const count = useSelector(selectCount);
   const finalCountDown = useSelector(selectFinalCount);
+  const highScore = useSelector(selectHighScore);
   const categoriesArray = useSelector(selectPreviousCategories);
   const newCategory = useSelector(selectNewCategory);
   const [answered, setAnswered] = useState(false);
@@ -110,7 +114,7 @@ const GamePage = () => {
     <div className="container container-wrapper">
       <div className="row">
         <div className="col-md-4">
-          <SideBarScore score={score} />
+          <SideBarScore score={score} highscore={highScore} />
         </div>
         <div className="col">
           <div className=" page-container">

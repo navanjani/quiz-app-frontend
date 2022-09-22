@@ -13,3 +13,6 @@ export const selectNewCategory = (reduxState) =>
 export const selectBonusModal = (reduxState) => reduxState.question.bonusModal;
 export const selectBonusCounter = (reduxState) =>
   reduxState.question.bounusCounter;
+export const selectHighScore = (reduxState) => reduxState.question.highScore;
+export const selectHScoreModalState = (reduxState) =>
+  reduxState.question.showHighScoreModal;
