@@ -23,3 +23,30 @@
 .top-score-wrapper{
     margin-top: 100px;
 }
+
+.wrong-answer {
+    background-color: red;
+}
+
+.correct-answer {
+    background-color: green;
+}
+
+.wrong-animate {
+    animation: shakeanimate 1s ease infinite;
+}
+@keyframes shakeanimate {
+    30% { transform: scale(1.2); }
+    40%, 60% { transform: rotate(-20deg) scale(1.2); }
+    50% { transform: rotate(20deg) scale(1.2); }
+    70% { transform: rotate(0deg) scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.correct-animate {
+    animation: flash 500ms ease infinite alternate;
+}
+@keyframes flash {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

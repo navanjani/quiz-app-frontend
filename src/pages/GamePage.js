@@ -2,10 +2,10 @@ import "./style.css";
 import SideBarScore from "../components/SideBarScore";
 import Answer from "../components/Answer";
 import ButtonComponent from "../components/ButtonComponent";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { fetchQuestions } from "../store/questionsPage/QuestionActions";
 import { useParams, Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   selectNewQuestionNumber,
   selectPreviousQuestionsNumber,
@@ -49,7 +49,13 @@ const GamePage = () => {
   const finalCountDown = useSelector(selectFinalCount);
   const categoriesArray = useSelector(selectPreviousCategories);
   const newCategory = useSelector(selectNewCategory);
+  const [answered, setAnswered] = useState(false);
   // console.log(newCategory, "new CAt");
+
+  // Set the answered to false when we have a new question
+  useEffect(() => {
+    setAnswered(false);
+  }, [qNumber]);
 
   const game = () => {
     if (pNumber.includes(qNumber)) {
@@ -61,27 +67,31 @@ const GamePage = () => {
   };
 
   const handleClick = (answer) => {
-    console.log("handle");
-    if (answer === true) {
-      setPreviousQuestionsNumber(qNumber);
-      dispatch(setScore());
-      dispatch(setCount());
-      dispatch(setFinalCount());
-      setTimeout(() => {
-        game();
-      }, 2000);
-    } else {
-      setPreviousQuestionsNumber(qNumber);
-      dispatch(setCount());
-      dispatch(setFinalCount());
-      setTimeout(() => {
-        game();
-      }, 2000);
+    if (!answered) {
+      if (answer === true) {
+        setPreviousQuestionsNumber(qNumber);
+        dispatch(setScore());
+        dispatch(setCount());
+        dispatch(setFinalCount());
+        setTimeout(() => {
+          game();
+        }, 2000);
+      } else {
+        setPreviousQuestionsNumber(qNumber);
+        dispatch(setCount());
+        dispatch(setFinalCount());
+        setTimeout(() => {
+          game();
+        }, 2000);
+      }
+      setAnswered(true);
     }
   };
+
   if (finalCountDown >= 12) {
     return <Navigate to="/final" />;
   }
+
   const round2 = () => {
     if (categoriesArray.includes(parseInt(newCategory))) {
       dispatch(newCatNumber(Math.floor(Math.random() * 3 + 1))); //bug does not give out new random number
@@ -109,6 +119,7 @@ const GamePage = () => {
                       {questions &&
                         questions[qNumber]?.answers.map((answer) => (
                           <Answer
+                            answered={answered}
                             answer={answer}
                             key={answer.id}
                             onClickHandler={handleClick}
