@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { categoryArrFetched, questionsFetched } from "./QuestionSlice";
 
 export const fecthQuestions = (id) => {
@@ -27,5 +28,14 @@ export const fetchCategoryArr = () => {
     } catch (e) {
       console.log(e.message);
     }
+
+
+import { questionsFetched } from "./QuestionSlice";
+
+export const fetchQuestions = (id) => {
+  return async (dispatch) => {
+    const response = await axios.get(`http://localhost:4000/category/${id}`);
+    dispatch(questionsFetched(response.data));
+
   };
 };

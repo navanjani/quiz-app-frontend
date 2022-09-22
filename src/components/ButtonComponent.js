@@ -1,8 +1,15 @@
 import { Button } from "react-bootstrap";
 
-const ButtonComponent = ({ label }) => {
+
+const ButtonComponent = ({ label, handleOnClick }) => {
   return (
-    <Button variant="primary" size="lg" style={{ backgroundColor: "green" }}>
+    <Button
+      onClick={handleOnClick}
+      variant="primary"
+      size="lg"
+      style={{ backgroundColor: "green" }}
+    >
+
       {label}
     </Button>
   );

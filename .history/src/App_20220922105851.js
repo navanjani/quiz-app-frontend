@@ -1,4 +1,4 @@
-
+import "./App.css";
 import HomePage from "./pages/HomePage";
 import { Routes, Route } from "react-router-dom";
 import FinalScreen from "./pages/FinalScreen";
@@ -14,7 +14,7 @@ function App() {
         <Route path="/final" element={<FinalScreen />} />
       </Routes>
     </div>
-
+  );
 }
 
 export default App;

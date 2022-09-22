@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-
-  pregunta: null,
-  category: null,
-  categoryArr: [],
-
   pregunta: [],
   preguntaNumber: Math.floor(Math.random() * 9 + 1),
   previousQuestionsNumber: [],
@@ -14,8 +9,10 @@ const initialState = {
   finalCount: 0,
   previousCategories: [],
   newCategoryNumber: Math.floor(Math.random() * 3 + 1),
+<<<<<<< HEAD
+=======
   bonusModal: false,
-
+>>>>>>> ce84029 (bonus question added)
 };
 
 const questionsSlice = createSlice({
@@ -25,13 +22,13 @@ const questionsSlice = createSlice({
     questionsFetched: (state, action) => {
       state.pregunta = action.payload;
     },
+<<<<<<< HEAD
 
-    categorySelected: (state, action) => {
-      state.category = action.payload;
+    answerFecthced: (state, action) => {
+      state.responder = action.payload;
     },
-    categoryArrFetched: (state, action) => {
-      state.categoryArr = action.payload;
-
+=======
+>>>>>>> ce84029 (bonus question added)
     newPreguntaNumber: (state, action) => {
       state.preguntaNumber = action.payload;
     },
@@ -59,19 +56,17 @@ const questionsSlice = createSlice({
     newCatNumber: (state, action) => {
       state.newCategoryNumber = action.payload;
     },
+<<<<<<< HEAD
+=======
     bonusModalSHow: (state) => {
       state.bonusModal = !state.bonusModal;
     },
     bonusQuestion: (state, action) => {
       state.score = state.score - action.payload;
-
     },
+>>>>>>> ce84029 (bonus question added)
   },
 });
-
-
-export const { questionsFetched, categorySelected, categoryArrFetched } =
-  questionsSlice.actions;
 
 export const {
   questionsFetched,
@@ -83,9 +78,11 @@ export const {
   setFinalCount,
   setPreviousCategories,
   newCatNumber,
+<<<<<<< HEAD
+=======
   bonusModalSHow,
   bonusQuestion,
+>>>>>>> ce84029 (bonus question added)
 } = questionsSlice.actions;
-
 
 export default questionsSlice.reducer;

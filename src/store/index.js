@@ -2,10 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import questionSlice from "./questionsPage/QuestionSlice";
 
 import appStateReducer from "./appState/slice";
+import questionReducer from "./questionsPage/QuestionSlice";
 
 export default configureStore({
-    reducer: {
-        appState: appStateReducer,
-        questions: questionSlice,
-    },
+
+  reducer: {
+    appState: appStateReducer,
+    question: questionReducer,
+  },
+
 });
