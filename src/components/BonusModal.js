@@ -2,10 +2,14 @@ import { Modal, Button, Card } from "react-bootstrap";
 import {
   bonusModalSHow,
   bonusQuestion,
+  newCatNumber,
 } from "../store/questionsPage/QuestionSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchQuestions } from "../store/questionsPage/QuestionActions";
-import { selectNewCategory } from "../store/questionsPage/questionSelectors";
+import {
+  selectNewCategory,
+  selectPreviousCategories,
+} from "../store/questionsPage/questionSelectors";
 import {
   selectQuestions,
   selectNewQuestionNumber,
@@ -19,9 +23,14 @@ export const BonusModal = () => {
   const cat = useSelector(selectNewCategory);
   const question = useSelector(selectQuestions);
   const qNumber = useSelector(selectNewQuestionNumber);
+  const categoriesArray = useSelector(selectPreviousCategories);
 
   useEffect(() => {
-    dispatch(fetchQuestions(cat));
+    if (categoriesArray.includes(parseInt(cat))) {
+      dispatch(newCatNumber(Math.floor(Math.random() * 3 + 1)));
+    } else {
+      dispatch(fetchQuestions(cat));
+    }
   }, []);
 
   const handleClick = (answer) => {

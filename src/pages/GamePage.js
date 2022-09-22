@@ -2,8 +2,11 @@ import "./style.css";
 import SideBarScore from "../components/SideBarScore";
 import Answer from "../components/Answer";
 import ButtonComponent from "../components/ButtonComponent";
-import { useDispatch, useSelector, useStore } from "react-redux";
-import { fetchQuestions } from "../store/questionsPage/QuestionActions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchQuestions,
+  getHighScore,
+} from "../store/questionsPage/QuestionActions";
 import { useParams, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -37,7 +40,8 @@ const GamePage = () => {
 
   useEffect(() => {
     dispatch(fetchQuestions(id));
-    dispatch(setPreviousCategories(id));
+    dispatch(setPreviousCategories(parseInt(id)));
+    dispatch(getHighScore());
   }, [dispatch, id]);
 
   const questions = useSelector(selectQuestions);
@@ -75,14 +79,14 @@ const GamePage = () => {
         dispatch(setFinalCount());
         setTimeout(() => {
           game();
-        }, 2000);
+        }, 1000);
       } else {
         setPreviousQuestionsNumber(qNumber);
         dispatch(setCount());
         dispatch(setFinalCount());
         setTimeout(() => {
           game();
-        }, 2000);
+        }, 1000);
       }
       setAnswered(true);
     }
@@ -98,6 +102,7 @@ const GamePage = () => {
     } else {
       dispatch(resetCount());
       dispatch(fetchQuestions(newCategory));
+      dispatch(setPreviousCategories(parseInt(newCategory)));
     }
   };
 
@@ -128,15 +133,14 @@ const GamePage = () => {
                     </Row>
                   </div>
                 ) : (
-                  <Button onClick={round2}>Round 2</Button>
+                  <ButtonComponent
+                    label="Round Two"
+                    handleOnClick={() => {
+                      round2();
+                    }}
+                  />
                 )}
               </div>
-            </div>
-            <div className="button-wrapper">
-              <ButtonComponent
-                handleOnClick={() => game()}
-                label="Next Question"
-              />
             </div>
           </div>
         </div>

@@ -10,6 +10,7 @@ const initialState = {
   previousCategories: [],
   newCategoryNumber: Math.floor(Math.random() * 3 + 1),
   bonusModal: false,
+  bounusCounter: 0,
 };
 
 const questionsSlice = createSlice({
@@ -48,6 +49,7 @@ const questionsSlice = createSlice({
     },
     bonusModalSHow: (state) => {
       state.bonusModal = !state.bonusModal;
+      state.bounusCounter = +1;
     },
     bonusQuestion: (state, action) => {
       state.score = state.score - action.payload;

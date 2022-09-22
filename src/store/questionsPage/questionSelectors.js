@@ -11,3 +11,5 @@ export const selectPreviousCategories = (reduxState) =>
 export const selectNewCategory = (reduxState) =>
   reduxState.question.newCategoryNumber;
 export const selectBonusModal = (reduxState) => reduxState.question.bonusModal;
+export const selectBonusCounter = (reduxState) =>
+  reduxState.question.bounusCounter;
