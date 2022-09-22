@@ -1,5 +1,5 @@
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Answer = ({ answer, answered, onClickHandler }) => {
   const [correct, setCorrect] = useState(false);
   const [wrong, setWrong] = useState(false);
@@ -14,6 +14,10 @@ const Answer = ({ answer, answered, onClickHandler }) => {
     }
     onClickHandler(correct);
   };
+  useEffect(() => {
+    setCorrect(false);
+    setWrong(false);
+  }, [answer]);
 
   return (
     <div className="col-md-6" onClick={() => handleOnClick(answer.correct)}>
